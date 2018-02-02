@@ -1,0 +1,17 @@
+name: survey
+channels:
+- defaults
+dependencies:
+- openpyxl
+- pandas
+- python
+- xlrd
+- scipy
+- pcre
+- pip:
+  - pylibmc
+  - google-cloud
+  - flask
+  - cachecontrol
+  - firebase-admin
+  - python-jose
