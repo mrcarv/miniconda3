@@ -1,6 +1,6 @@
 FROM debian:stable-20171210
 
-RUN apt-get update && apt-get install -y build-essential zlib1g-dev libssl-dev libmemcached-dev && rm -rf /var/lib/apt/lists
+RUN apt-get update && apt-get install -y build-essential zlib1g-dev libssl-dev libmemcached-dev wget && rm -rf /var/lib/apt/lists
 
 ENV miniconda_path=/miniconda3
 ENV miniconda_repo=https://repo.continuum.io/miniconda
