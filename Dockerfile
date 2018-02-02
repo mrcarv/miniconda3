@@ -15,3 +15,6 @@ COPY conda_requirements.yml .
 RUN conda env update -n base --file conda_requirements.yml && rm conda_requirements.yml
 
 RUN LDFLAGS=-fno-lto CPATH=${miniconda_path}/include LIBRARY_PATH=${miniconda_path}/lib pip install uwsgi
+
+ENV LD_LIBRARY_PATH=/miniconda3/lib
+ENV LC_CTYPE=C.UTF-8
