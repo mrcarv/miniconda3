@@ -3,7 +3,6 @@ FROM debian:stable-20171210 as builder
 RUN apt-get update \
     && apt-get install -y \
         build-essential \
-        ca-certificates \
         libmemcached-dev \
         libssl-dev \
         wget \
@@ -34,9 +33,6 @@ RUN LDFLAGS=-fno-lto CPATH=${miniconda_path}/include \
 
 
 FROM debian:stable-20171210
-RUN apt-get update \
-    && apt-get install -y ca-certificates \
-    && rm -rf /var/lib/apt/lists
 ENV miniconda_path=/miniconda3
 COPY --from=builder ${miniconda_path} ${miniconda_path}
 ENV PATH=${miniconda_path}/bin:${PATH}
