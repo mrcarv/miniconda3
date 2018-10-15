@@ -1,4 +1,4 @@
-FROM debian:stable-20171210 as builder
+FROM debian:stable-20180831 as builder
 
 RUN apt-get update \
     && apt-get install -y \
@@ -11,7 +11,7 @@ RUN apt-get update \
 
 ENV miniconda_path=/miniconda3
 ENV miniconda_repo=https://repo.continuum.io/miniconda
-ENV miniconda_version=4.3.31
+ENV miniconda_version=4.5.11
 ENV miniconda_filename=Miniconda3-${miniconda_version}-Linux-x86_64.sh
 
 RUN wget -q ${miniconda_repo}/${miniconda_filename} \
@@ -32,7 +32,7 @@ RUN LDFLAGS=-fno-lto CPATH=${miniconda_path}/include \
     pip install uwsgi
 
 
-FROM debian:stable-20171210
+FROM debian:stable-20180831
 ENV miniconda_path=/miniconda3
 COPY --from=builder ${miniconda_path} ${miniconda_path}
 ENV PATH=${miniconda_path}/bin:${PATH}
